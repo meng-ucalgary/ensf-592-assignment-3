@@ -7,70 +7,58 @@
 # You may import any modules from the standard Python library.
 # Remember to include docstrings and comments.
 
-from encode import Encode
-import re
+from crypto import Crypto
+from userinput import UserInput
+import colors
 
 
 def main():
-    print("Welcome to Encryption Program")
+    """
+    Function to serve as a TUI front-end of the encryption program
+    """
+    print("\n\nWelcome to Encryption Program")
+    print("-----------------------------\n")
 
-    print("What do you want to try today: Encryption or Decryption?")
-    print()
-    print("Enter e or encode or encryption for Encryption")
-    print("Enter d or decode or decryption for Decryption")
+    user_input = UserInput()
 
-    print("Enter your choice:", end=" ")
+    print("\n[{0}INFO{1}] What do you want to try today: Encryption or Decryption?\n".format(
+        colors.yellow, colors.reset))
+    print("[{0}NOTE{1}] For Encryption : enter either e or encrypt".format(
+        colors.cyan, colors.reset))
+    print("[{0}NOTE{1}] For Decryption : enter either d or decrypt\n".format(
+        colors.cyan, colors.reset))
 
-    while(True):
-        try:
-            choice = input()
+    # get the choice from the user for encryption or decryption
+    choice = user_input.get_choice()
 
-            if choice.casefold() == "e".casefold() or choice.casefold() == "encrypt".casefold() or choice.casefold() == "ENCRYPTION".casefold():
-                pass
-                break
+    # if: user chooses encryption, else: user chooses decryption
+    if choice == "encrypt":
+        # get the text to be encoded
+        text = user_input.get_text(choice)
 
-            elif choice.casefold() == "d".casefold() or choice.casefold() == "decrypt".casefold() or choice.casefold() == "DECRYPTION".casefold():
-                pass
-                break
+        # get the cipher to use for encoding
+        cipher = user_input.get_cipher()
 
-            else:
-                raise ValueError
+        # create an object of class Crypto to use its function encrypt()
+        code = Crypto(cipher)
+        print("\n[{0}DONE{1}] Encoded text is\n\n{2}".format(
+            colors.green, colors.reset, code.encrypt(text)))
 
-        except ValueError:
-            print("Incorrect choice! Please enter your choice again:", end=" ")
-            continue
+    else:
+        # get the text to be decoded
+        text = user_input.get_text(choice)
 
+        # # get the cipher to use for decoding
+        cipher = user_input.get_cipher()
 
+        # create an object of class Crypto to use its function decrypt()
+        code = Crypto(cipher)
+        print("\n[{0}DONE{1}] Decoded text is\n\n{2}".format(
+            colors.green, colors.reset, code.decrypt(text)))
 
-
-# if __name__ == '__main__':
-#     main()
-
-
-
-def test():
-    # user inputs
-    text = "Tell me and I forget. Teach me and I remember. Involve me and I learn. - Benjamin Franklin"
-    cipher = "bcdefghijklmnopqrstuvwxyza"
-
-
-    # user inputs for decode
-    text = "uifcftuboenptucfbvujgvmuijohtjouifxpsmedboopucftffopsfwfoupvdifeuifznvtucfgfmuxjuiuififbsuifmfolfmmfs"
-    cipher = "bcdefghijklmnopqrstuvwxyza"
-
-
-    regex = re.compile('\w')
-    cleaned_text = ""
-    cleaned_text = cleaned_text.join(regex.findall(text.lower()))
-
-    # alternate way of cleaning the input text
-    # cleaned_text = "".join(re.findall("[a-zA-Z0-9]+", text))
-    # cleaned_text = regex.findall(text)
-
-    encode = Encode(cipher, cleaned_text)
-    # print(encode.encrypt())
-    print(encode.decrypt())
+    # print see-off message to let user know program has terminated
+    print("\n\n{0}Bye!{1}".format(colors.green, colors.reset))
 
 
-test()
-
+if __name__ == '__main__':
+    main()
