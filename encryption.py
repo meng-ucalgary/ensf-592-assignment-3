@@ -10,6 +10,7 @@
 from crypto import Crypto
 from userinput import UserInput
 import colors
+import os
 
 
 def main():
@@ -19,6 +20,16 @@ def main():
     print("\n\nWelcome to Encryption Program")
     print("-----------------------------\n")
 
+    # Windows Console does not recognize the ANSI escape sequence from external programs
+    #
+    # using os.system('') exploits a bug in cmd.exe, where cmd.exe is failing to disable the VT Mode,
+    # and thus printing the colored output rather than the ANSI sequence itself
+    #
+    # For more information of this bug, go to https://bugs.python.org/issue30075
+    #
+    # This line (os.system("")) is added to make sure the colored output is printed when this application
+    # is started in windows default console.
+    os.system("")
     user_input = UserInput()
 
     print("\n[{0}INFO{1}] What do you want to try today: Encryption or Decryption?\n".format(
