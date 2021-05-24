@@ -97,10 +97,9 @@ class UserInput:
         text = input()
         cleaned_text = ""
 
-
         # for encoding, keep only alphabets and remove everything else. Then convert to lowercase
         if choice == "encrypt":
-            # compile the regular expression to use only alphabets characters
+            # compile the regular expression to use only alphabetic characters
             regex = re.compile('[a-zA-Z]+')
             # regex.findAll() will return a list of all individual characters. join() them into a string, and then convert to lowercase
             cleaned_text = cleaned_text.join(regex.findall(text)).lower()
@@ -110,14 +109,6 @@ class UserInput:
             cleaned_text = text
 
         return cleaned_text
-
-
-
-
-
-
-
-
 
     def get_cipher(self):
         """
