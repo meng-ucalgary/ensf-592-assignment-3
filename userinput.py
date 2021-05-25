@@ -14,9 +14,9 @@ class UserInput:
 
     Methods:
         check_cipher(self, cipher): Function to check the validity of the parameter - 26 characters long consisting of lower alphanumeric only
-        get_choice(self): Function to get user input to choose to encrypt or decrypt the text
-        get_text(self, choice): Function to receive user input to get the text to be encrypted or decrypted, and process the text for further operations
-        get_cipher(self): Function to receive user input to get the cipher for encryption or decryption
+        get_choice(self):           Function to get user input to choose to encrypt or decrypt the text
+        get_text(self, choice):     Function to receive user input to get the text to be encrypted or decrypted, and process the text for further operations
+        get_cipher(self):           Function to receive user input to get the cipher for encryption or decryption
     """
 
     def check_cipher(self, cipher):
@@ -27,20 +27,23 @@ class UserInput:
                 cipher (str): the cipher whose validity needs to be checked
 
             Returns:
-                (bool): True if cipher is valid and False if cipher is invalid
+                (bool):       True if cipher is valid and False if cipher is invalid
         """
         cipher = str(cipher)
 
         if len(cipher) != 26:
             # checking for length of 26
+            print("len() breached")
             return False
 
         elif not cipher.islower():
             # checking for lowercase
+            print("islower() breached")
             return False
 
         elif not cipher.isalnum():
             # checking for something other than alphabets and numbers
+            print("isalnum() breached")
             return False
 
         else:
@@ -85,7 +88,7 @@ class UserInput:
         Function to receive user input to get the text to be encrypted or decrypted, and process the text for further operations
 
         Parameters:
-            choice (str): the choice user has made - either encrypt or decrypt
+            choice (str):       the choice user has made - either encrypt or decrypt
 
         Returns:
             cleaned_text (str): the text by removing non-alphanumeric characters and converting it into lowercase in case of encryption

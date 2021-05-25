@@ -8,16 +8,18 @@ class Crypto:
     """
     Class to provide methods for encryption and decryption
 
+    Constructor:
+        accepts a parameter cipher of type str which is used for encoding or decoding the text
+
     Attributes:
-        __cipher (str): the cipher to be used for encryption or decryption
-        __alphabets (list): a list of individual characters of alphabets
+        __cipher (str):               the cipher to be used for encryption or decryption
+        __alphabets (list):           a list of individual characters of alphabets
         __encoding_dict (dictionary): dictionary with alphabets as key and corresponding substitution cipher as value
         __decoding_dict (dictionary): dictionary with substitution cipher as key and alphabets as value
 
     Methods:
-        __init__(self, cipher): Constructor to initialize __cipher, create list of alphabets, and dictionaries mapping alphabets and cipher
-        encrypt(self, text): Function to encrypt the parameter using the cipher
-        decrypt(self, text): Function to decrypt the parameter using the cipher
+        encrypt(self, text):          Function to encrypt the parameter using the cipher
+        decrypt(self, text):          Function to decrypt the parameter using the cipher
     """
     __cipher = ""
 
@@ -47,7 +49,7 @@ class Crypto:
         Function to encrypt the parameter using the cipher
 
         Parameters:
-            text (str): the string to be encrypted
+            text (str):             the string to be encrypted
 
         Returns:
             encrypted_string (str): the encrypted text
@@ -66,7 +68,7 @@ class Crypto:
         Function to decrypt the parameter using the cipher
 
         Parameters:
-            text (str): the string to be decrypted
+            text (str):             the string to be decrypted
 
         Returns:
             decrypted_string (str): the decrypted text
