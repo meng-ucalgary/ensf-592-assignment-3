@@ -33,17 +33,14 @@ class UserInput:
 
         if len(cipher) != 26:
             # checking for length of 26
-            print("len() breached")
             return False
 
         elif not cipher.islower():
             # checking for lowercase
-            print("islower() breached")
             return False
 
         elif not cipher.isalnum():
             # checking for something other than alphabets and numbers
-            print("isalnum() breached")
             return False
 
         else:
