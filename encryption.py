@@ -16,6 +16,12 @@ import os
 def main():
     """
     Function to serve as a TUI front-end of the encryption program
+
+        Parameters:
+            none
+
+        Returns:
+            None
     """
     print("\n\nWelcome to Encryption Program")
     print("-----------------------------\n")

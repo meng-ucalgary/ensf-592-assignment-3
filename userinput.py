@@ -50,6 +50,9 @@ class UserInput:
         """
         Function to get user input to choose to encrypt or decrypt the text
 
+            Parameters:
+                none
+
             Returns:
                 choice (str): "encrypt" if user decides to encode the text or "decrypt" if user decides to decode the text
         """
@@ -84,11 +87,11 @@ class UserInput:
         """
         Function to receive user input to get the text to be encrypted or decrypted, and process the text for further operations
 
-        Parameters:
-            choice (str):       the choice user has made - either encrypt or decrypt
+            Parameters:
+                choice (str):       the choice user has made - either encrypt or decrypt
 
-        Returns:
-            cleaned_text (str): the text by removing non-alphanumeric characters and converting it into lowercase in case of encryption
+            Returns:
+                cleaned_text (str): the text by removing non-alphanumeric characters and converting it into lowercase in case of encryption
         """
 
         print("[{0}INFO{1}] Enter the text below that you want to {2}:\n".format(
@@ -114,8 +117,11 @@ class UserInput:
         """
         Function to receive user input to get the cipher for encryption or decryption
 
-        Returns:
-            cipher (str): the cipher entered by the user, after validity checks
+            Parameters:
+                none
+
+            Returns:
+                cipher (str): the cipher entered by the user, after validity checks
         """
 
         print("\n[{0}INFO{1}] Requesting cipher to proceed\n".format(
